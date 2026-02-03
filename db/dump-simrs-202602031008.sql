@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict djHReJjOTJfIgVwbJsc2djHGAKmmnVvoKFmYRLYfXS7ePPY67copugLcY97Jdcb
+\restrict ybsHMJktxsAKfrcSPPPaUEWnrzPW7eD4qW6gzcLIngWGVTuXpW5xoGgO1ocnoDF
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
 
--- Started on 2026-01-30 17:17:33
+-- Started on 2026-02-03 10:08:04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -30,9 +30,9 @@ DROP DATABASE simrs;
 CREATE DATABASE simrs WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_United States.1252';
 
 
-\unrestrict djHReJjOTJfIgVwbJsc2djHGAKmmnVvoKFmYRLYfXS7ePPY67copugLcY97Jdcb
+\unrestrict ybsHMJktxsAKfrcSPPPaUEWnrzPW7eD4qW6gzcLIngWGVTuXpW5xoGgO1ocnoDF
 \connect simrs
-\restrict djHReJjOTJfIgVwbJsc2djHGAKmmnVvoKFmYRLYfXS7ePPY67copugLcY97Jdcb
+\restrict ybsHMJktxsAKfrcSPPPaUEWnrzPW7eD4qW6gzcLIngWGVTuXpW5xoGgO1ocnoDF
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -532,7 +532,7 @@ ALTER SEQUENCE public.jadwal_visite_id_seq OWNED BY public.jadwal_visite.id;
 
 
 --
--- TOC entry 243 (class 1259 OID 58293)
+-- TOC entry 289 (class 1259 OID 66383)
 -- Name: jasa_medis; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -541,19 +541,22 @@ CREATE TABLE public.jasa_medis (
     tgl_transaksi timestamp without time zone,
     kode_tindakan_medis character varying,
     dpjp character varying,
+    no_sip character varying,
     no_registrasi character varying,
-    total_jasa_medis character varying,
-    share_tin_dokter character varying,
-    ppn_share_dokter character varying,
-    share_tin_hospital character varying,
-    ppn_share_hospital character varying,
+    share_tin_perawat integer,
+    ppn_share_perawat integer,
+    total_jasa_medis integer,
+    share_tin_dokter integer,
+    ppn_share_dokter integer,
+    share_tin_hospital integer,
+    ppn_share_hospital integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
 
 
 --
--- TOC entry 244 (class 1259 OID 58299)
+-- TOC entry 288 (class 1259 OID 66382)
 -- Name: jasa_medis_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -568,7 +571,7 @@ CREATE SEQUENCE public.jasa_medis_id_seq
 
 --
 -- TOC entry 5257 (class 0 OID 0)
--- Dependencies: 244
+-- Dependencies: 288
 -- Name: jasa_medis_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -576,7 +579,7 @@ ALTER SEQUENCE public.jasa_medis_id_seq OWNED BY public.jasa_medis.id;
 
 
 --
--- TOC entry 245 (class 1259 OID 58300)
+-- TOC entry 243 (class 1259 OID 58300)
 -- Name: job_batches; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -595,7 +598,7 @@ CREATE TABLE public.job_batches (
 
 
 --
--- TOC entry 246 (class 1259 OID 58312)
+-- TOC entry 244 (class 1259 OID 58312)
 -- Name: jobs; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -611,7 +614,7 @@ CREATE TABLE public.jobs (
 
 
 --
--- TOC entry 247 (class 1259 OID 58323)
+-- TOC entry 245 (class 1259 OID 58323)
 -- Name: jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -625,7 +628,7 @@ CREATE SEQUENCE public.jobs_id_seq
 
 --
 -- TOC entry 5258 (class 0 OID 0)
--- Dependencies: 247
+-- Dependencies: 245
 -- Name: jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -633,7 +636,7 @@ ALTER SEQUENCE public.jobs_id_seq OWNED BY public.jobs.id;
 
 
 --
--- TOC entry 248 (class 1259 OID 58324)
+-- TOC entry 246 (class 1259 OID 58324)
 -- Name: kamar; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -653,7 +656,7 @@ CREATE TABLE public.kamar (
 
 
 --
--- TOC entry 249 (class 1259 OID 58330)
+-- TOC entry 247 (class 1259 OID 58330)
 -- Name: kamar_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -668,7 +671,7 @@ CREATE SEQUENCE public.kamar_no_seq
 
 --
 -- TOC entry 5259 (class 0 OID 0)
--- Dependencies: 249
+-- Dependencies: 247
 -- Name: kamar_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -676,7 +679,7 @@ ALTER SEQUENCE public.kamar_no_seq OWNED BY public.kamar.no;
 
 
 --
--- TOC entry 250 (class 1259 OID 58331)
+-- TOC entry 248 (class 1259 OID 58331)
 -- Name: kunjungan; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -691,7 +694,7 @@ CREATE TABLE public.kunjungan (
 
 
 --
--- TOC entry 251 (class 1259 OID 58339)
+-- TOC entry 249 (class 1259 OID 58339)
 -- Name: kunjungan_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -706,7 +709,7 @@ CREATE SEQUENCE public.kunjungan_id_seq
 
 --
 -- TOC entry 5260 (class 0 OID 0)
--- Dependencies: 251
+-- Dependencies: 249
 -- Name: kunjungan_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -714,7 +717,7 @@ ALTER SEQUENCE public.kunjungan_id_seq OWNED BY public.kunjungan.id;
 
 
 --
--- TOC entry 252 (class 1259 OID 58340)
+-- TOC entry 250 (class 1259 OID 58340)
 -- Name: layanan; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -730,7 +733,7 @@ CREATE TABLE public.layanan (
 
 
 --
--- TOC entry 253 (class 1259 OID 58346)
+-- TOC entry 251 (class 1259 OID 58346)
 -- Name: layanan_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -744,7 +747,7 @@ CREATE SEQUENCE public.layanan_no_seq
 
 --
 -- TOC entry 5261 (class 0 OID 0)
--- Dependencies: 253
+-- Dependencies: 251
 -- Name: layanan_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -752,7 +755,7 @@ ALTER SEQUENCE public.layanan_no_seq OWNED BY public.layanan.no;
 
 
 --
--- TOC entry 254 (class 1259 OID 58347)
+-- TOC entry 252 (class 1259 OID 58347)
 -- Name: lims; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -773,7 +776,7 @@ CREATE TABLE public.lims (
 
 
 --
--- TOC entry 255 (class 1259 OID 58364)
+-- TOC entry 253 (class 1259 OID 58364)
 -- Name: lims_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -788,7 +791,7 @@ CREATE SEQUENCE public.lims_no_seq
 
 --
 -- TOC entry 5262 (class 0 OID 0)
--- Dependencies: 255
+-- Dependencies: 253
 -- Name: lims_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -796,7 +799,7 @@ ALTER SEQUENCE public.lims_no_seq OWNED BY public.lims.no;
 
 
 --
--- TOC entry 256 (class 1259 OID 58365)
+-- TOC entry 254 (class 1259 OID 58365)
 -- Name: log_history; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -812,7 +815,7 @@ CREATE TABLE public.log_history (
 
 
 --
--- TOC entry 257 (class 1259 OID 58377)
+-- TOC entry 255 (class 1259 OID 58377)
 -- Name: log_history_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -827,7 +830,7 @@ CREATE SEQUENCE public.log_history_no_seq
 
 --
 -- TOC entry 5263 (class 0 OID 0)
--- Dependencies: 257
+-- Dependencies: 255
 -- Name: log_history_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -835,7 +838,7 @@ ALTER SEQUENCE public.log_history_no_seq OWNED BY public.log_history.no;
 
 
 --
--- TOC entry 258 (class 1259 OID 58378)
+-- TOC entry 256 (class 1259 OID 58378)
 -- Name: logistik_non_medis; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -856,7 +859,7 @@ CREATE TABLE public.logistik_non_medis (
 
 
 --
--- TOC entry 259 (class 1259 OID 58386)
+-- TOC entry 257 (class 1259 OID 58386)
 -- Name: logistik_non_medis_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -871,7 +874,7 @@ CREATE SEQUENCE public.logistik_non_medis_no_seq
 
 --
 -- TOC entry 5264 (class 0 OID 0)
--- Dependencies: 259
+-- Dependencies: 257
 -- Name: logistik_non_medis_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -879,7 +882,7 @@ ALTER SEQUENCE public.logistik_non_medis_no_seq OWNED BY public.logistik_non_med
 
 
 --
--- TOC entry 260 (class 1259 OID 58387)
+-- TOC entry 258 (class 1259 OID 58387)
 -- Name: migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -891,7 +894,7 @@ CREATE TABLE public.migrations (
 
 
 --
--- TOC entry 261 (class 1259 OID 58393)
+-- TOC entry 259 (class 1259 OID 58393)
 -- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -906,7 +909,7 @@ CREATE SEQUENCE public.migrations_id_seq
 
 --
 -- TOC entry 5265 (class 0 OID 0)
--- Dependencies: 261
+-- Dependencies: 259
 -- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -914,7 +917,7 @@ ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
 --
--- TOC entry 262 (class 1259 OID 58394)
+-- TOC entry 260 (class 1259 OID 58394)
 -- Name: obat; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -944,7 +947,7 @@ CREATE TABLE public.obat (
 
 
 --
--- TOC entry 289 (class 1259 OID 58654)
+-- TOC entry 285 (class 1259 OID 58654)
 -- Name: obat_fornas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -962,7 +965,7 @@ CREATE TABLE public.obat_fornas (
 
 --
 -- TOC entry 5266 (class 0 OID 0)
--- Dependencies: 289
+-- Dependencies: 285
 -- Name: TABLE obat_fornas; Type: COMMENT; Schema: public; Owner: -
 --
 
@@ -971,7 +974,7 @@ obat.';
 
 
 --
--- TOC entry 288 (class 1259 OID 58653)
+-- TOC entry 284 (class 1259 OID 58653)
 -- Name: obat_master_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -986,7 +989,7 @@ CREATE SEQUENCE public.obat_master_no_seq
 
 --
 -- TOC entry 5267 (class 0 OID 0)
--- Dependencies: 288
+-- Dependencies: 284
 -- Name: obat_master_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -994,7 +997,7 @@ ALTER SEQUENCE public.obat_master_no_seq OWNED BY public.obat_fornas.no;
 
 
 --
--- TOC entry 263 (class 1259 OID 58400)
+-- TOC entry 261 (class 1259 OID 58400)
 -- Name: obat_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1009,7 +1012,7 @@ CREATE SEQUENCE public.obat_no_seq
 
 --
 -- TOC entry 5268 (class 0 OID 0)
--- Dependencies: 263
+-- Dependencies: 261
 -- Name: obat_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1017,7 +1020,7 @@ ALTER SEQUENCE public.obat_no_seq OWNED BY public.obat.no;
 
 
 --
--- TOC entry 264 (class 1259 OID 58401)
+-- TOC entry 262 (class 1259 OID 58401)
 -- Name: pasien; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1058,7 +1061,7 @@ CREATE TABLE public.pasien (
 
 
 --
--- TOC entry 265 (class 1259 OID 58407)
+-- TOC entry 263 (class 1259 OID 58407)
 -- Name: pasien_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1073,7 +1076,7 @@ CREATE SEQUENCE public.pasien_id_seq
 
 --
 -- TOC entry 5269 (class 0 OID 0)
--- Dependencies: 265
+-- Dependencies: 263
 -- Name: pasien_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1081,7 +1084,7 @@ ALTER SEQUENCE public.pasien_id_seq OWNED BY public.pasien.id;
 
 
 --
--- TOC entry 266 (class 1259 OID 58408)
+-- TOC entry 264 (class 1259 OID 58408)
 -- Name: password_reset_tokens; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1093,7 +1096,7 @@ CREATE TABLE public.password_reset_tokens (
 
 
 --
--- TOC entry 267 (class 1259 OID 58415)
+-- TOC entry 265 (class 1259 OID 58415)
 -- Name: pekerjaan; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1106,7 +1109,7 @@ CREATE TABLE public.pekerjaan (
 
 
 --
--- TOC entry 268 (class 1259 OID 58421)
+-- TOC entry 266 (class 1259 OID 58421)
 -- Name: pekerjaan_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1121,7 +1124,7 @@ CREATE SEQUENCE public.pekerjaan_no_seq
 
 --
 -- TOC entry 5270 (class 0 OID 0)
--- Dependencies: 268
+-- Dependencies: 266
 -- Name: pekerjaan_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1129,7 +1132,7 @@ ALTER SEQUENCE public.pekerjaan_no_seq OWNED BY public.pekerjaan.no;
 
 
 --
--- TOC entry 269 (class 1259 OID 58422)
+-- TOC entry 267 (class 1259 OID 58422)
 -- Name: pembelian; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1152,7 +1155,7 @@ CREATE TABLE public.pembelian (
 
 
 --
--- TOC entry 270 (class 1259 OID 58428)
+-- TOC entry 268 (class 1259 OID 58428)
 -- Name: pembelian_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1167,7 +1170,7 @@ CREATE SEQUENCE public.pembelian_id_seq
 
 --
 -- TOC entry 5271 (class 0 OID 0)
--- Dependencies: 270
+-- Dependencies: 268
 -- Name: pembelian_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1175,7 +1178,7 @@ ALTER SEQUENCE public.pembelian_id_seq OWNED BY public.pembelian.id;
 
 
 --
--- TOC entry 271 (class 1259 OID 58429)
+-- TOC entry 269 (class 1259 OID 58429)
 -- Name: pendidikan; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1188,7 +1191,7 @@ CREATE TABLE public.pendidikan (
 
 
 --
--- TOC entry 272 (class 1259 OID 58435)
+-- TOC entry 270 (class 1259 OID 58435)
 -- Name: pendidikan_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1203,7 +1206,7 @@ CREATE SEQUENCE public.pendidikan_no_seq
 
 --
 -- TOC entry 5272 (class 0 OID 0)
--- Dependencies: 272
+-- Dependencies: 270
 -- Name: pendidikan_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1211,7 +1214,7 @@ ALTER SEQUENCE public.pendidikan_no_seq OWNED BY public.pendidikan.no;
 
 
 --
--- TOC entry 273 (class 1259 OID 58436)
+-- TOC entry 271 (class 1259 OID 58436)
 -- Name: penjualan; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1234,7 +1237,7 @@ CREATE TABLE public.penjualan (
 
 
 --
--- TOC entry 274 (class 1259 OID 58442)
+-- TOC entry 272 (class 1259 OID 58442)
 -- Name: penjualan_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1249,7 +1252,7 @@ CREATE SEQUENCE public.penjualan_id_seq
 
 --
 -- TOC entry 5273 (class 0 OID 0)
--- Dependencies: 274
+-- Dependencies: 272
 -- Name: penjualan_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1257,7 +1260,7 @@ ALTER SEQUENCE public.penjualan_id_seq OWNED BY public.penjualan.id;
 
 
 --
--- TOC entry 275 (class 1259 OID 58443)
+-- TOC entry 273 (class 1259 OID 58443)
 -- Name: religi; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1270,7 +1273,7 @@ CREATE TABLE public.religi (
 
 
 --
--- TOC entry 276 (class 1259 OID 58452)
+-- TOC entry 274 (class 1259 OID 58452)
 -- Name: religi_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1285,7 +1288,7 @@ CREATE SEQUENCE public.religi_no_seq
 
 --
 -- TOC entry 5274 (class 0 OID 0)
--- Dependencies: 276
+-- Dependencies: 274
 -- Name: religi_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1293,7 +1296,7 @@ ALTER SEQUENCE public.religi_no_seq OWNED BY public.religi.no;
 
 
 --
--- TOC entry 277 (class 1259 OID 58453)
+-- TOC entry 275 (class 1259 OID 58453)
 -- Name: resep; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1313,7 +1316,7 @@ CREATE TABLE public.resep (
 
 
 --
--- TOC entry 278 (class 1259 OID 58468)
+-- TOC entry 276 (class 1259 OID 58468)
 -- Name: resep_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1328,7 +1331,7 @@ CREATE SEQUENCE public.resep_no_seq
 
 --
 -- TOC entry 5275 (class 0 OID 0)
--- Dependencies: 278
+-- Dependencies: 276
 -- Name: resep_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1336,7 +1339,7 @@ ALTER SEQUENCE public.resep_no_seq OWNED BY public.resep.no;
 
 
 --
--- TOC entry 279 (class 1259 OID 58469)
+-- TOC entry 277 (class 1259 OID 58469)
 -- Name: rim; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1357,7 +1360,7 @@ CREATE TABLE public.rim (
 
 
 --
--- TOC entry 280 (class 1259 OID 58486)
+-- TOC entry 278 (class 1259 OID 58486)
 -- Name: rim_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1372,7 +1375,7 @@ CREATE SEQUENCE public.rim_no_seq
 
 --
 -- TOC entry 5276 (class 0 OID 0)
--- Dependencies: 280
+-- Dependencies: 278
 -- Name: rim_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1380,7 +1383,7 @@ ALTER SEQUENCE public.rim_no_seq OWNED BY public.rim.no;
 
 
 --
--- TOC entry 281 (class 1259 OID 58487)
+-- TOC entry 279 (class 1259 OID 58487)
 -- Name: sessions; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1395,7 +1398,7 @@ CREATE TABLE public.sessions (
 
 
 --
--- TOC entry 282 (class 1259 OID 58495)
+-- TOC entry 287 (class 1259 OID 66373)
 -- Name: tindakan_medis; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1408,14 +1411,14 @@ CREATE TABLE public.tindakan_medis (
     status character varying,
     no_tindakan character varying,
     kelas character varying,
-    harga_tindakan character varying,
-    ppn character varying,
-    harga_tindakan_final character varying
+    harga_tindakan integer,
+    ppn integer,
+    harga_tindakan_final integer
 );
 
 
 --
--- TOC entry 283 (class 1259 OID 58501)
+-- TOC entry 286 (class 1259 OID 66372)
 -- Name: tindakan_medis_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1430,7 +1433,7 @@ CREATE SEQUENCE public.tindakan_medis_no_seq
 
 --
 -- TOC entry 5277 (class 0 OID 0)
--- Dependencies: 283
+-- Dependencies: 286
 -- Name: tindakan_medis_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1438,7 +1441,7 @@ ALTER SEQUENCE public.tindakan_medis_no_seq OWNED BY public.tindakan_medis.no;
 
 
 --
--- TOC entry 284 (class 1259 OID 58502)
+-- TOC entry 280 (class 1259 OID 58502)
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1455,7 +1458,7 @@ CREATE TABLE public.users (
 
 
 --
--- TOC entry 285 (class 1259 OID 58511)
+-- TOC entry 281 (class 1259 OID 58511)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1469,7 +1472,7 @@ CREATE SEQUENCE public.users_id_seq
 
 --
 -- TOC entry 5278 (class 0 OID 0)
--- Dependencies: 285
+-- Dependencies: 281
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1477,7 +1480,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 286 (class 1259 OID 58512)
+-- TOC entry 282 (class 1259 OID 58512)
 -- Name: warga_negara; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1491,7 +1494,7 @@ CREATE TABLE public.warga_negara (
 
 
 --
--- TOC entry 287 (class 1259 OID 58522)
+-- TOC entry 283 (class 1259 OID 58522)
 -- Name: warga_negara_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1506,7 +1509,7 @@ CREATE SEQUENCE public.warga_negara_no_seq
 
 --
 -- TOC entry 5279 (class 0 OID 0)
--- Dependencies: 287
+-- Dependencies: 283
 -- Name: warga_negara_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -1594,7 +1597,7 @@ ALTER TABLE ONLY public.jadwal_visite ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 4919 (class 2604 OID 58533)
+-- TOC entry 4942 (class 2604 OID 66386)
 -- Name: jasa_medis id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1602,7 +1605,7 @@ ALTER TABLE ONLY public.jasa_medis ALTER COLUMN id SET DEFAULT nextval('public.j
 
 
 --
--- TOC entry 4920 (class 2604 OID 58534)
+-- TOC entry 4919 (class 2604 OID 58534)
 -- Name: jobs id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1610,7 +1613,7 @@ ALTER TABLE ONLY public.jobs ALTER COLUMN id SET DEFAULT nextval('public.jobs_id
 
 
 --
--- TOC entry 4921 (class 2604 OID 58535)
+-- TOC entry 4920 (class 2604 OID 58535)
 -- Name: kamar no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1618,7 +1621,7 @@ ALTER TABLE ONLY public.kamar ALTER COLUMN no SET DEFAULT nextval('public.kamar_
 
 
 --
--- TOC entry 4922 (class 2604 OID 58536)
+-- TOC entry 4921 (class 2604 OID 58536)
 -- Name: kunjungan id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1626,7 +1629,7 @@ ALTER TABLE ONLY public.kunjungan ALTER COLUMN id SET DEFAULT nextval('public.ku
 
 
 --
--- TOC entry 4923 (class 2604 OID 58537)
+-- TOC entry 4922 (class 2604 OID 58537)
 -- Name: layanan no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1634,7 +1637,7 @@ ALTER TABLE ONLY public.layanan ALTER COLUMN no SET DEFAULT nextval('public.laya
 
 
 --
--- TOC entry 4924 (class 2604 OID 58538)
+-- TOC entry 4923 (class 2604 OID 58538)
 -- Name: lims no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1642,7 +1645,7 @@ ALTER TABLE ONLY public.lims ALTER COLUMN no SET DEFAULT nextval('public.lims_no
 
 
 --
--- TOC entry 4925 (class 2604 OID 58539)
+-- TOC entry 4924 (class 2604 OID 58539)
 -- Name: log_history no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1658,7 +1661,7 @@ ALTER TABLE ONLY public.logistik_medis ALTER COLUMN no SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4926 (class 2604 OID 58541)
+-- TOC entry 4925 (class 2604 OID 58541)
 -- Name: logistik_non_medis no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1666,7 +1669,7 @@ ALTER TABLE ONLY public.logistik_non_medis ALTER COLUMN no SET DEFAULT nextval('
 
 
 --
--- TOC entry 4929 (class 2604 OID 58542)
+-- TOC entry 4928 (class 2604 OID 58542)
 -- Name: migrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1674,7 +1677,7 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 
 
 --
--- TOC entry 4930 (class 2604 OID 58543)
+-- TOC entry 4929 (class 2604 OID 58543)
 -- Name: obat no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1682,7 +1685,7 @@ ALTER TABLE ONLY public.obat ALTER COLUMN no SET DEFAULT nextval('public.obat_no
 
 
 --
--- TOC entry 4942 (class 2604 OID 58657)
+-- TOC entry 4940 (class 2604 OID 58657)
 -- Name: obat_fornas no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1690,7 +1693,7 @@ ALTER TABLE ONLY public.obat_fornas ALTER COLUMN no SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4931 (class 2604 OID 58544)
+-- TOC entry 4930 (class 2604 OID 58544)
 -- Name: pasien id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1698,7 +1701,7 @@ ALTER TABLE ONLY public.pasien ALTER COLUMN id SET DEFAULT nextval('public.pasie
 
 
 --
--- TOC entry 4932 (class 2604 OID 58545)
+-- TOC entry 4931 (class 2604 OID 58545)
 -- Name: pekerjaan no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1706,7 +1709,7 @@ ALTER TABLE ONLY public.pekerjaan ALTER COLUMN no SET DEFAULT nextval('public.pe
 
 
 --
--- TOC entry 4933 (class 2604 OID 58546)
+-- TOC entry 4932 (class 2604 OID 58546)
 -- Name: pembelian id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1714,7 +1717,7 @@ ALTER TABLE ONLY public.pembelian ALTER COLUMN id SET DEFAULT nextval('public.pe
 
 
 --
--- TOC entry 4934 (class 2604 OID 58547)
+-- TOC entry 4933 (class 2604 OID 58547)
 -- Name: pendidikan no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1722,7 +1725,7 @@ ALTER TABLE ONLY public.pendidikan ALTER COLUMN no SET DEFAULT nextval('public.p
 
 
 --
--- TOC entry 4935 (class 2604 OID 58548)
+-- TOC entry 4934 (class 2604 OID 58548)
 -- Name: penjualan id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1730,7 +1733,7 @@ ALTER TABLE ONLY public.penjualan ALTER COLUMN id SET DEFAULT nextval('public.pe
 
 
 --
--- TOC entry 4936 (class 2604 OID 58549)
+-- TOC entry 4935 (class 2604 OID 58549)
 -- Name: religi no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1738,7 +1741,7 @@ ALTER TABLE ONLY public.religi ALTER COLUMN no SET DEFAULT nextval('public.relig
 
 
 --
--- TOC entry 4937 (class 2604 OID 58550)
+-- TOC entry 4936 (class 2604 OID 58550)
 -- Name: resep no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1746,7 +1749,7 @@ ALTER TABLE ONLY public.resep ALTER COLUMN no SET DEFAULT nextval('public.resep_
 
 
 --
--- TOC entry 4938 (class 2604 OID 58551)
+-- TOC entry 4937 (class 2604 OID 58551)
 -- Name: rim no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1754,7 +1757,7 @@ ALTER TABLE ONLY public.rim ALTER COLUMN no SET DEFAULT nextval('public.rim_no_s
 
 
 --
--- TOC entry 4939 (class 2604 OID 58552)
+-- TOC entry 4941 (class 2604 OID 66376)
 -- Name: tindakan_medis no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1762,7 +1765,7 @@ ALTER TABLE ONLY public.tindakan_medis ALTER COLUMN no SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4940 (class 2604 OID 58553)
+-- TOC entry 4938 (class 2604 OID 58553)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1770,7 +1773,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- TOC entry 4941 (class 2604 OID 58554)
+-- TOC entry 4939 (class 2604 OID 58554)
 -- Name: warga_negara no; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1909,42 +1912,42 @@ INSERT INTO public.jadwal_praktek VALUES (10, '10', '34', '07:00-12:00', 'SELASA
 
 
 --
--- TOC entry 5193 (class 0 OID 58293)
--- Dependencies: 243
+-- TOC entry 5239 (class 0 OID 66383)
+-- Dependencies: 289
 -- Data for Name: jasa_medis; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5195 (class 0 OID 58300)
--- Dependencies: 245
+-- TOC entry 5193 (class 0 OID 58300)
+-- Dependencies: 243
 -- Data for Name: job_batches; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5196 (class 0 OID 58312)
--- Dependencies: 246
+-- TOC entry 5194 (class 0 OID 58312)
+-- Dependencies: 244
 -- Data for Name: jobs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5198 (class 0 OID 58324)
--- Dependencies: 248
+-- TOC entry 5196 (class 0 OID 58324)
+-- Dependencies: 246
 -- Data for Name: kamar; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.kamar VALUES (1, 'CROWN 6-1', '2026-01-10 13:37:32', '2026-01-10 13:37:33', 'CR61', '1', '6-1', 'VVIP', '1500000', '150000', '1650000');
-INSERT INTO public.kamar VALUES (2, 'CROWN 6-2', '2026-01-10 13:40:16', '2026-01-10 13:40:18', 'CR61', '1', '6-2', 'VVIP', '1500000', '150000', '1650000');
+INSERT INTO public.kamar VALUES (2, 'CROWN 6-2', '2026-01-10 13:40:16', '2026-01-10 13:40:18', 'CR62', '1', '6-2', 'VVIP', '1500000', '150000', '1650000');
 
 
 --
--- TOC entry 5200 (class 0 OID 58331)
--- Dependencies: 250
+-- TOC entry 5198 (class 0 OID 58331)
+-- Dependencies: 248
 -- Data for Name: kunjungan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -1962,8 +1965,8 @@ INSERT INTO public.kunjungan VALUES (11, '-29012026-10323811', '00-00-00-10', '2
 
 
 --
--- TOC entry 5202 (class 0 OID 58340)
--- Dependencies: 252
+-- TOC entry 5200 (class 0 OID 58340)
+-- Dependencies: 250
 -- Data for Name: layanan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2010,16 +2013,16 @@ INSERT INTO public.layanan VALUES (32, 'KLINIK SPESIALIS ONGKOLOGIi', '2025-11-0
 
 
 --
--- TOC entry 5204 (class 0 OID 58347)
--- Dependencies: 254
+-- TOC entry 5202 (class 0 OID 58347)
+-- Dependencies: 252
 -- Data for Name: lims; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5206 (class 0 OID 58365)
--- Dependencies: 256
+-- TOC entry 5204 (class 0 OID 58365)
+-- Dependencies: 254
 -- Data for Name: log_history; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2034,16 +2037,16 @@ INSERT INTO public.layanan VALUES (32, 'KLINIK SPESIALIS ONGKOLOGIi', '2025-11-0
 
 
 --
--- TOC entry 5208 (class 0 OID 58378)
--- Dependencies: 258
+-- TOC entry 5206 (class 0 OID 58378)
+-- Dependencies: 256
 -- Data for Name: logistik_non_medis; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5210 (class 0 OID 58387)
--- Dependencies: 260
+-- TOC entry 5208 (class 0 OID 58387)
+-- Dependencies: 258
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2054,8 +2057,8 @@ INSERT INTO public.migrations VALUES (4, '2025_10_16_070402_create_hrmsmodels_ta
 
 
 --
--- TOC entry 5212 (class 0 OID 58394)
--- Dependencies: 262
+-- TOC entry 5210 (class 0 OID 58394)
+-- Dependencies: 260
 -- Data for Name: obat; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2067,16 +2070,16 @@ INSERT INTO public.obat VALUES (5, 'alprazolam - TABLET 1 MILIGRAM', '', '3x1', 
 
 
 --
--- TOC entry 5239 (class 0 OID 58654)
--- Dependencies: 289
+-- TOC entry 5235 (class 0 OID 58654)
+-- Dependencies: 285
 -- Data for Name: obat_fornas; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5214 (class 0 OID 58401)
--- Dependencies: 264
+-- TOC entry 5212 (class 0 OID 58401)
+-- Dependencies: 262
 -- Data for Name: pasien; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2100,16 +2103,16 @@ INSERT INTO public.pasien VALUES (17, '00-00-00-17', 'ANGELY AYU PUTRI U.NY', '1
 
 
 --
--- TOC entry 5216 (class 0 OID 58408)
--- Dependencies: 266
+-- TOC entry 5214 (class 0 OID 58408)
+-- Dependencies: 264
 -- Data for Name: password_reset_tokens; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5217 (class 0 OID 58415)
--- Dependencies: 267
+-- TOC entry 5215 (class 0 OID 58415)
+-- Dependencies: 265
 -- Data for Name: pekerjaan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2125,16 +2128,16 @@ INSERT INTO public.pekerjaan VALUES (9, 'Wiraswasta', '2025-11-08 10:04:45', '20
 
 
 --
--- TOC entry 5219 (class 0 OID 58422)
--- Dependencies: 269
+-- TOC entry 5217 (class 0 OID 58422)
+-- Dependencies: 267
 -- Data for Name: pembelian; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5221 (class 0 OID 58429)
--- Dependencies: 271
+-- TOC entry 5219 (class 0 OID 58429)
+-- Dependencies: 269
 -- Data for Name: pendidikan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2151,16 +2154,16 @@ INSERT INTO public.pendidikan VALUES (1, 'SD', '2025-11-10 07:54:50', '2025-11-1
 
 
 --
--- TOC entry 5223 (class 0 OID 58436)
--- Dependencies: 273
+-- TOC entry 5221 (class 0 OID 58436)
+-- Dependencies: 271
 -- Data for Name: penjualan; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5225 (class 0 OID 58443)
--- Dependencies: 275
+-- TOC entry 5223 (class 0 OID 58443)
+-- Dependencies: 273
 -- Data for Name: religi; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2172,24 +2175,24 @@ INSERT INTO public.religi VALUES (6, 'Hindu', '2025-11-10 07:58:24', '2025-11-10
 
 
 --
--- TOC entry 5227 (class 0 OID 58453)
--- Dependencies: 277
+-- TOC entry 5225 (class 0 OID 58453)
+-- Dependencies: 275
 -- Data for Name: resep; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5229 (class 0 OID 58469)
--- Dependencies: 279
+-- TOC entry 5227 (class 0 OID 58469)
+-- Dependencies: 277
 -- Data for Name: rim; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5231 (class 0 OID 58487)
--- Dependencies: 281
+-- TOC entry 5229 (class 0 OID 58487)
+-- Dependencies: 279
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2197,27 +2200,26 @@ INSERT INTO public.sessions VALUES ('D0jt7xejInIXBG2C9j8QVEeQ58bvBGnastSnXN7g', 
 
 
 --
--- TOC entry 5232 (class 0 OID 58495)
--- Dependencies: 282
+-- TOC entry 5237 (class 0 OID 66373)
+-- Dependencies: 287
 -- Data for Name: tindakan_medis; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.tindakan_medis VALUES (1, 'injeksi', '2026-01-28 13:57:28', '2026-01-28 13:57:29', 'inj', '1', '1', '1', '500', '60', '560');
-INSERT INTO public.tindakan_medis VALUES (2, 'kateterisasi', '2026-01-28 13:59:55', '2026-01-28 13:59:56', 'kat', '1', '2', '1', '5000', '600', '5600');
-INSERT INTO public.tindakan_medis VALUES (3, 'rawat_luka_ringan', '2026-01-28 14:04:20', '2026-01-28 14:04:24', 'rlk', '1', '3', '1', '25000', '3000', '28000');
+INSERT INTO public.tindakan_medis VALUES (1, 'injeksi', '2026-02-02 14:52:08', '2026-02-02 14:52:11', 'INJ1', '1', '1', '2', 5000, 600, 5600);
+INSERT INTO public.tindakan_medis VALUES (2, 'rawat luka kecil', '2026-02-02 15:11:05', '2026-02-02 15:11:11', 'RLK', '1', '2', '2', 7500, 900, 8400);
 
 
 --
--- TOC entry 5234 (class 0 OID 58502)
--- Dependencies: 284
+-- TOC entry 5230 (class 0 OID 58502)
+-- Dependencies: 280
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- TOC entry 5236 (class 0 OID 58512)
--- Dependencies: 286
+-- TOC entry 5232 (class 0 OID 58512)
+-- Dependencies: 282
 -- Data for Name: warga_negara; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -2324,7 +2326,7 @@ SELECT pg_catalog.setval('public.jadwal_visite_id_seq', 1, false);
 
 --
 -- TOC entry 5291 (class 0 OID 0)
--- Dependencies: 244
+-- Dependencies: 288
 -- Name: jasa_medis_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2333,7 +2335,7 @@ SELECT pg_catalog.setval('public.jasa_medis_id_seq', 1, false);
 
 --
 -- TOC entry 5292 (class 0 OID 0)
--- Dependencies: 247
+-- Dependencies: 245
 -- Name: jobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2342,7 +2344,7 @@ SELECT pg_catalog.setval('public.jobs_id_seq', 1, false);
 
 --
 -- TOC entry 5293 (class 0 OID 0)
--- Dependencies: 249
+-- Dependencies: 247
 -- Name: kamar_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2351,7 +2353,7 @@ SELECT pg_catalog.setval('public.kamar_no_seq', 2, true);
 
 --
 -- TOC entry 5294 (class 0 OID 0)
--- Dependencies: 251
+-- Dependencies: 249
 -- Name: kunjungan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2360,7 +2362,7 @@ SELECT pg_catalog.setval('public.kunjungan_id_seq', 11, true);
 
 --
 -- TOC entry 5295 (class 0 OID 0)
--- Dependencies: 253
+-- Dependencies: 251
 -- Name: layanan_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2369,7 +2371,7 @@ SELECT pg_catalog.setval('public.layanan_no_seq', 40, true);
 
 --
 -- TOC entry 5296 (class 0 OID 0)
--- Dependencies: 255
+-- Dependencies: 253
 -- Name: lims_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2378,7 +2380,7 @@ SELECT pg_catalog.setval('public.lims_no_seq', 1, false);
 
 --
 -- TOC entry 5297 (class 0 OID 0)
--- Dependencies: 257
+-- Dependencies: 255
 -- Name: log_history_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2387,7 +2389,7 @@ SELECT pg_catalog.setval('public.log_history_no_seq', 1, false);
 
 --
 -- TOC entry 5298 (class 0 OID 0)
--- Dependencies: 259
+-- Dependencies: 257
 -- Name: logistik_non_medis_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2396,7 +2398,7 @@ SELECT pg_catalog.setval('public.logistik_non_medis_no_seq', 1, false);
 
 --
 -- TOC entry 5299 (class 0 OID 0)
--- Dependencies: 261
+-- Dependencies: 259
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2405,7 +2407,7 @@ SELECT pg_catalog.setval('public.migrations_id_seq', 4, true);
 
 --
 -- TOC entry 5300 (class 0 OID 0)
--- Dependencies: 288
+-- Dependencies: 284
 -- Name: obat_master_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2414,7 +2416,7 @@ SELECT pg_catalog.setval('public.obat_master_no_seq', 1, false);
 
 --
 -- TOC entry 5301 (class 0 OID 0)
--- Dependencies: 263
+-- Dependencies: 261
 -- Name: obat_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2423,7 +2425,7 @@ SELECT pg_catalog.setval('public.obat_no_seq', 5, true);
 
 --
 -- TOC entry 5302 (class 0 OID 0)
--- Dependencies: 265
+-- Dependencies: 263
 -- Name: pasien_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2432,7 +2434,7 @@ SELECT pg_catalog.setval('public.pasien_id_seq', 17, true);
 
 --
 -- TOC entry 5303 (class 0 OID 0)
--- Dependencies: 268
+-- Dependencies: 266
 -- Name: pekerjaan_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2441,7 +2443,7 @@ SELECT pg_catalog.setval('public.pekerjaan_no_seq', 9, true);
 
 --
 -- TOC entry 5304 (class 0 OID 0)
--- Dependencies: 270
+-- Dependencies: 268
 -- Name: pembelian_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2450,7 +2452,7 @@ SELECT pg_catalog.setval('public.pembelian_id_seq', 1, false);
 
 --
 -- TOC entry 5305 (class 0 OID 0)
--- Dependencies: 272
+-- Dependencies: 270
 -- Name: pendidikan_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2459,7 +2461,7 @@ SELECT pg_catalog.setval('public.pendidikan_no_seq', 10, true);
 
 --
 -- TOC entry 5306 (class 0 OID 0)
--- Dependencies: 274
+-- Dependencies: 272
 -- Name: penjualan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2468,7 +2470,7 @@ SELECT pg_catalog.setval('public.penjualan_id_seq', 1, false);
 
 --
 -- TOC entry 5307 (class 0 OID 0)
--- Dependencies: 276
+-- Dependencies: 274
 -- Name: religi_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2477,7 +2479,7 @@ SELECT pg_catalog.setval('public.religi_no_seq', 6, true);
 
 --
 -- TOC entry 5308 (class 0 OID 0)
--- Dependencies: 278
+-- Dependencies: 276
 -- Name: resep_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2486,7 +2488,7 @@ SELECT pg_catalog.setval('public.resep_no_seq', 1, false);
 
 --
 -- TOC entry 5309 (class 0 OID 0)
--- Dependencies: 280
+-- Dependencies: 278
 -- Name: rim_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2495,16 +2497,16 @@ SELECT pg_catalog.setval('public.rim_no_seq', 1, false);
 
 --
 -- TOC entry 5310 (class 0 OID 0)
--- Dependencies: 283
+-- Dependencies: 286
 -- Name: tindakan_medis_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.tindakan_medis_no_seq', 3, true);
+SELECT pg_catalog.setval('public.tindakan_medis_no_seq', 2, true);
 
 
 --
 -- TOC entry 5311 (class 0 OID 0)
--- Dependencies: 285
+-- Dependencies: 281
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2513,7 +2515,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 --
 -- TOC entry 5312 (class 0 OID 0)
--- Dependencies: 287
+-- Dependencies: 283
 -- Name: warga_negara_no_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -2647,7 +2649,7 @@ ALTER TABLE ONLY public.jadwal_visite
 
 
 --
--- TOC entry 4972 (class 2606 OID 58584)
+-- TOC entry 5021 (class 2606 OID 66391)
 -- Name: jasa_medis jasa_medis_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2656,7 +2658,7 @@ ALTER TABLE ONLY public.jasa_medis
 
 
 --
--- TOC entry 4974 (class 2606 OID 58586)
+-- TOC entry 4972 (class 2606 OID 58586)
 -- Name: job_batches job_batches_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2665,7 +2667,7 @@ ALTER TABLE ONLY public.job_batches
 
 
 --
--- TOC entry 4976 (class 2606 OID 58588)
+-- TOC entry 4974 (class 2606 OID 58588)
 -- Name: jobs jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2674,7 +2676,7 @@ ALTER TABLE ONLY public.jobs
 
 
 --
--- TOC entry 4979 (class 2606 OID 58590)
+-- TOC entry 4977 (class 2606 OID 58590)
 -- Name: kamar kamar_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2683,7 +2685,7 @@ ALTER TABLE ONLY public.kamar
 
 
 --
--- TOC entry 4981 (class 2606 OID 58592)
+-- TOC entry 4979 (class 2606 OID 58592)
 -- Name: kunjungan kunjungan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2692,7 +2694,7 @@ ALTER TABLE ONLY public.kunjungan
 
 
 --
--- TOC entry 4983 (class 2606 OID 58594)
+-- TOC entry 4981 (class 2606 OID 58594)
 -- Name: layanan layanan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2701,7 +2703,7 @@ ALTER TABLE ONLY public.layanan
 
 
 --
--- TOC entry 4985 (class 2606 OID 58596)
+-- TOC entry 4983 (class 2606 OID 58596)
 -- Name: lims lims_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2710,7 +2712,7 @@ ALTER TABLE ONLY public.lims
 
 
 --
--- TOC entry 4987 (class 2606 OID 58598)
+-- TOC entry 4985 (class 2606 OID 58598)
 -- Name: logistik_non_medis logistik_non_medis_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2719,7 +2721,7 @@ ALTER TABLE ONLY public.logistik_non_medis
 
 
 --
--- TOC entry 4989 (class 2606 OID 58600)
+-- TOC entry 4987 (class 2606 OID 58600)
 -- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2728,7 +2730,7 @@ ALTER TABLE ONLY public.migrations
 
 
 --
--- TOC entry 5021 (class 2606 OID 58662)
+-- TOC entry 5017 (class 2606 OID 58662)
 -- Name: obat_fornas obat_master_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2737,7 +2739,7 @@ ALTER TABLE ONLY public.obat_fornas
 
 
 --
--- TOC entry 4991 (class 2606 OID 58602)
+-- TOC entry 4989 (class 2606 OID 58602)
 -- Name: obat obat_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2746,7 +2748,7 @@ ALTER TABLE ONLY public.obat
 
 
 --
--- TOC entry 4993 (class 2606 OID 58604)
+-- TOC entry 4991 (class 2606 OID 58604)
 -- Name: pasien pasien_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2755,7 +2757,7 @@ ALTER TABLE ONLY public.pasien
 
 
 --
--- TOC entry 4995 (class 2606 OID 58606)
+-- TOC entry 4993 (class 2606 OID 58606)
 -- Name: password_reset_tokens password_reset_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2764,7 +2766,7 @@ ALTER TABLE ONLY public.password_reset_tokens
 
 
 --
--- TOC entry 4997 (class 2606 OID 58608)
+-- TOC entry 4995 (class 2606 OID 58608)
 -- Name: pekerjaan pekerjaan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2773,7 +2775,7 @@ ALTER TABLE ONLY public.pekerjaan
 
 
 --
--- TOC entry 4999 (class 2606 OID 58610)
+-- TOC entry 4997 (class 2606 OID 58610)
 -- Name: pembelian pembelian_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2782,7 +2784,7 @@ ALTER TABLE ONLY public.pembelian
 
 
 --
--- TOC entry 5001 (class 2606 OID 58612)
+-- TOC entry 4999 (class 2606 OID 58612)
 -- Name: pendidikan pendidikan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2791,7 +2793,7 @@ ALTER TABLE ONLY public.pendidikan
 
 
 --
--- TOC entry 5003 (class 2606 OID 58614)
+-- TOC entry 5001 (class 2606 OID 58614)
 -- Name: penjualan penjualan_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2800,7 +2802,7 @@ ALTER TABLE ONLY public.penjualan
 
 
 --
--- TOC entry 5005 (class 2606 OID 58616)
+-- TOC entry 5003 (class 2606 OID 58616)
 -- Name: religi religi_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2809,7 +2811,7 @@ ALTER TABLE ONLY public.religi
 
 
 --
--- TOC entry 5007 (class 2606 OID 58618)
+-- TOC entry 5005 (class 2606 OID 58618)
 -- Name: rim rim_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2818,7 +2820,7 @@ ALTER TABLE ONLY public.rim
 
 
 --
--- TOC entry 5010 (class 2606 OID 58620)
+-- TOC entry 5008 (class 2606 OID 58620)
 -- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2827,7 +2829,7 @@ ALTER TABLE ONLY public.sessions
 
 
 --
--- TOC entry 5013 (class 2606 OID 58622)
+-- TOC entry 5019 (class 2606 OID 66381)
 -- Name: tindakan_medis tindakan_medis_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2836,7 +2838,7 @@ ALTER TABLE ONLY public.tindakan_medis
 
 
 --
--- TOC entry 5015 (class 2606 OID 58624)
+-- TOC entry 5011 (class 2606 OID 58624)
 -- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2845,7 +2847,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 5017 (class 2606 OID 58626)
+-- TOC entry 5013 (class 2606 OID 58626)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2854,7 +2856,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 5019 (class 2606 OID 58628)
+-- TOC entry 5015 (class 2606 OID 58628)
 -- Name: warga_negara warga_negara_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2863,7 +2865,7 @@ ALTER TABLE ONLY public.warga_negara
 
 
 --
--- TOC entry 4977 (class 1259 OID 58629)
+-- TOC entry 4975 (class 1259 OID 58629)
 -- Name: jobs_queue_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2871,7 +2873,7 @@ CREATE INDEX jobs_queue_index ON public.jobs USING btree (queue);
 
 
 --
--- TOC entry 5008 (class 1259 OID 58630)
+-- TOC entry 5006 (class 1259 OID 58630)
 -- Name: sessions_last_activity_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2879,18 +2881,18 @@ CREATE INDEX sessions_last_activity_index ON public.sessions USING btree (last_a
 
 
 --
--- TOC entry 5011 (class 1259 OID 58631)
+-- TOC entry 5009 (class 1259 OID 58631)
 -- Name: sessions_user_id_index; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX sessions_user_id_index ON public.sessions USING btree (user_id);
 
 
--- Completed on 2026-01-30 17:17:34
+-- Completed on 2026-02-03 10:08:04
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict djHReJjOTJfIgVwbJsc2djHGAKmmnVvoKFmYRLYfXS7ePPY67copugLcY97Jdcb
+\unrestrict ybsHMJktxsAKfrcSPPPaUEWnrzPW7eD4qW6gzcLIngWGVTuXpW5xoGgO1ocnoDF
 
