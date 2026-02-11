@@ -33,8 +33,36 @@ class maincontroller extends Controller
          $tday=DATE("Y-m-d");
         $kunjungan_hi=Kunjungan::SELECT('pasien.norm AS norm','pasien.nama AS nama','kunjungan.created_at As tanggal','kunjungan.noregister As noregister','antrian.no_antrian As antrian')->Join('pasien','kunjungan.norm','=','pasien.norm')->Join('antrian','kunjungan.noregister','=','antrian.no_register')->Where('noregister','NOT LIKE',"IGD%")->Where('kunjungan.status','0')->Where('kunjungan.created_at','LIKE',$tday."%")->OrderBy('kunjungan.id','ASC')->get();
         $layanan_hi=layanan::all();
-        $jadwl_dokter=dpjp::SELECT('dpjp.nama_dokter AS nama_dpjp','dpjp.status AS status_dpjp','dpjp.no_sip','jadwal_praktek.jam_praktek AS jam_p','jadwal_praktek.hari_praktek AS hari_p','jadwal_praktek.shift','layanan.kd_layanan','layanan.nama_layanan AS poli')->Join('jadwal_praktek','dpjp.no','=','jadwal_praktek.id')->Join('layanan','dpjp.jenis_praktek','=','layanan.kode_layanan')->get();
-        return view('outpatient',compact('kunjungan_hi','layanan_hi','jadwl_dokter'));
+        $harii=DATE("l",strtotime($tday));
+        switch ($harii) {
+            case 'Monday':
+                $hariini='SENIN';
+                break;
+            case 'Tuesday':
+                $hariini='SELASA';
+                break;
+            case 'Wednesday':
+                $hariini='RABU';
+                break;
+            case 'Thrueday':
+                $hariini='KAMIS';
+                break;    
+            case 'Friday':
+                $hariini='JUMAT';
+                break;    
+            case 'Saturday':
+                $hariini='SABTU';
+                break;    
+           case 'Sunday':
+                $hariini='MINGGU';
+                break; 
+            default:
+                # code...
+                break;
+        }
+        $jadwl_dokter=dpjp::SELECT('dpjp.nama_dokter AS nama_dpjp','dpjp.status AS status_dpjp','dpjp.no_sip','jadwal_praktek.jam_praktek AS jam_p','jadwal_praktek.hari_praktek AS hari_p','jadwal_praktek.shift','layanan.kd_layanan','layanan.nama_layanan AS poli')->Join('jadwal_praktek','dpjp.no','=','jadwal_praktek.id')->Join('layanan','dpjp.jenis_praktek','=','layanan.kode_layanan')->Where('jadwal_praktek.hari_praktek',$hariini)->get();
+        $dr_praktek=$jadwl_dokter->count();
+		return view('outpatient',compact('kunjungan_hi','layanan_hi','jadwl_dokter','hariini','dr_praktek'));
     }
      
     public function login() {

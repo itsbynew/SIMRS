@@ -104,7 +104,10 @@ class crudcontroller extends Controller
         
         $poli=$request->poli;   
 
-        switch ($poli) {
+        if (!empty($poli)){
+            $id_p=$poli;
+        
+        /*switch ($poli) {
             case 'IGD':
                 $id_p=$poli;
                 break;
@@ -114,7 +117,7 @@ class crudcontroller extends Controller
             default:
                 $id_p=$poli;
                 break;
-        } 
+        } */
 
            
         $noregdb=$id_p."-".$noreg;
@@ -123,9 +126,8 @@ class crudcontroller extends Controller
         $register->norm = $request->norm;
         $register->status ="0";
         $register->save();
-       
 
-        $antri=antrian::Where('tgl_antrian',$hini)->count();
+        $antri=antrian::Where('tgl_antrian',$hini)->Where('no_antrian','LIKE',$poli.'%')->count();
 
         if ($antri < 9)
         {
@@ -144,6 +146,12 @@ class crudcontroller extends Controller
         $que->norm = $request->norm;
         $que->tgl_antrian = $hini;
         $que->save();
+       
+        } else {
+            echo ("registasi gagal");
+        } 
+
+        
 
         
       

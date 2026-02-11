@@ -95,15 +95,15 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
+        <nav class="sidebar sidebar-offcanvas " id="sidebar">
+          <ul class="nav col-18">
             <li class="nav-item">       
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="/tindakan_igd" aria-expanded="false" aria-controls="tables">
-                <span class="menu-title">List Pasien POLI | RAWAT JALAN Hari ini</span>
+                <span class="menu-title">List Pasien POLI | RAWAT JALAN Hari ini {{$hariini}}</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
             </li>
@@ -394,6 +394,7 @@
                           <p class="card-description"> Pilihlah <code>Jadwal Dokter Yang tersedia</code> di tabel berikut untuk memastikan anda dapat dilayani sesuai dengan jadwal dokter yang anda inginkan </p>
                         </div> 
                         <div>
+						@if (empty($dr_praktek))
                         <div class="row table-responsive">
                         <table class="table table-striped table-hover order-column" border="1" width="100%">
                                 <tbody id="datatable">
@@ -404,6 +405,7 @@
                                     </tr>
                                 </tbody>
                         </table>
+						@else
                         <div class="row table-responsive">
                         <table class="table table-striped table-bordered table-hover order-column" border="1" width="100%">
                                 <thead class="btn-success">
@@ -431,6 +433,7 @@
                                    @endforeach 
                                 </tbody>
                             </table>
+						@endif	
              </div>
                         </div>
                         
