@@ -109,32 +109,7 @@
             </li>
 
             <li class="nav-item">
-           <div class="row table-responsive">
-                        <table class="table table-striped table-bordered table-hover order-column" border="1" width="100%">
-                                <thead class="btn-success">
-                                    <tr>
-                                        <th><center> NO.Antiran </center></th>
-                                        <th><center> NO.Registrasi </center></th>    
-                                        <th><center> NO.RM </center></th>
-                                                                         
-                                    </tr>
-                                </thead>
-                                <tbody id="navdatatable">
-                                   @foreach ($kunjungan_hi as $kun)
-                                    <tr>
-                                       <!-- <td colspan="1">
-                                            <center><b>Tidak ada data</b></center>
-                                        </td>-->
-                                       
-                                         <td><center><b> {{ $kun->antrian }} </b></center></td> 
-                                             <td><center><b> {{ $kun->noregister }} </b></center></td>                                
-                                            <td><center><b> {{ $kun->norm }}<br>{{ $kun->nama }} </b></center></td>
-                                        </td>
-                                    </tr>
-                                   @endforeach 
-                                </tbody>
-                            </table>
-            </div>
+          
             </li>
             <li class="nav-item">
             <button id="reload" class="btn btn-sm btn-gradient-light py-3" type="button" onclick="load_ulang()">Refresh</button>
@@ -331,7 +306,34 @@
                   </div>
                 </div>
               </div>
-
+			<!-- list Pasien-->
+		
+		
+                        <table class="table table-striped table-bordered table-hover order-column" border="1" width="100%">
+                                <thead class="btn-success">
+                                    <tr>
+                                        <th><center> NO.Antiran </center></th>
+                                        <th><center> NO.Registrasi </center></th>    
+                                        <th><center> NO.RM </center></th>
+                                                                         
+                                    </tr>
+                                </thead>
+                                <tbody id="navdatatable">
+                                   @foreach ($kunjungan_hi as $kun)
+                                    <tr>
+                                       <!-- <td colspan="1">
+                                            <center><b>Tidak ada data</b></center>
+                                        </td>-->
+                                       
+                                         <td><center><b> {{ $kun->antrian }} </b></center></td> 
+                                             <td><center><b> {{ $kun->noregister }} </b></center></td>                                
+                                            <td><center><b> {{ $kun->norm }}<br>{{ $kun->nama }} </b></center></td>
+                                        </td>
+                                    </tr>
+                                   @endforeach 
+                                </tbody>
+                            </table>
+      
 
               <!--datatable-->
               <div id="card_pendaftaran" class="col-18 grid-margin">
