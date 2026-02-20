@@ -44,7 +44,7 @@ class maincontroller extends Controller
             case 'Wednesday':
                 $hariini='RABU';
                 break;
-            case 'Thrueday':
+            case 'Thursday':
                 $hariini='KAMIS';
                 break;    
             case 'Friday':
@@ -103,15 +103,15 @@ class maincontroller extends Controller
 
     public function dashboard(Request $request) {
 
-      if ($request->session()->has('username')) {
+      /*if ($request->session()->has('username')) {
             $uname= $request->session()->get('username');
             $passwd= $request->session()->get('password');
         }
         else
-        {    
+        {*/    
       $uname=$request->username;
       $passwd=$request->passwd;
-        }
+        //}
       $get_user=Users::Where('username',$uname)->Where('password',md5($passwd))->count();
       $request->session()->put('username',$uname);
       $request->session()->put('password',$passwd);
@@ -124,9 +124,10 @@ class maincontroller extends Controller
         default:       
             $user= $request->session()->get('username');
             $password= $request->session()->get('password');
-            $profile=Users::Where('username',$user);
+            $profile=Users::Where('username',$user)->Where('password',md5($password))->get();
             $total_pasien=Pasien::All()->count();
             $latest_norm= Pasien::SELECT('norm','nama')->Orderby('id','DESC')->limit(1)->get();
+            //dd($profile);
             return view('dashboard',compact('user','profile','total_pasien','latest_norm'));
             break;
       }
